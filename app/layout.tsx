@@ -1,6 +1,10 @@
+import '@radix-ui/themes/styles.css';
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import NavBar from './NavBar'
+import Head from 'next/head'
+import { Theme } from '@radix-ui/themes';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +20,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <Head>
+        <title>Tech job</title>
+      </Head>
+      <body className={inter.className}>
+        <Theme>
+          <NavBar />
+          <main className='p-5'>
+            {children}
+          </main>
+        </Theme>
+      </body>
     </html>
   )
 }
